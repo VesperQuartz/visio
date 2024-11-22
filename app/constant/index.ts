@@ -1,7 +1,7 @@
 export const modal = [
   {
     lang: "english",
-    model: "Xenova/speecht5_tts",
+    model: "Xenova/mms-tts-eng",
     code: "en",
   },
   // {

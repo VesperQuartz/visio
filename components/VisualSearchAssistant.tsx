@@ -13,7 +13,7 @@ import { modal } from "@/app/constant";
 export default function VisualSearchAssistant() {
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
   const [description, setDescription] = React.useState<string>("");
-  const [language, setLanguage] = React.useState<string>("Xenova/speecht5_tts");
+  const [language, setLanguage] = React.useState<string>("Xenova/mms-tts-eng");
   const [path, setPath] = React.useState<string| null>(null);
   const code = modal.find((lang) => lang.model === language)?.code || "en";
   const upload = useUploadImage();
@@ -44,6 +44,7 @@ export default function VisualSearchAssistant() {
                       onSuccess: (data) => {
                         console.log("data-desc", data);
                         setDescription(data[0]?.translation_text);
+                        console.log("lang", language, data);
                         tts.mutate({text: data[0]?.translation_text, modal: language}, {
                           onSuccess: (data) => {
                             wav.mutate({sampling_rate: data.sampling_rate, audio: data.audio, name: crypto.randomUUID()}, {
@@ -69,12 +70,32 @@ export default function VisualSearchAssistant() {
   };
   console.log("upload data", upload?.data);
 
+  const renderStatusMessage = () => {
+    if (upload.isPending) {
+      return <p>Please wait while we process your image...</p>;
+    }
+    if (iToText.isPending) {
+      return <p>Processing image and extracting information, please wait...</p>;
+    }
+    if (translator.isPending) {
+      return <p>Wait while we translate your text...</p>;
+    }
+    if (tts.isPending) {
+      return <p>Wait while we process the audio...</p>;
+    }
+    if (wav.isPending) {
+      return <p>Generating audio file, please wait...</p>;
+    }
+    return null;
+  };
+
+
   return (
     <div className="w-full">
       <Card className="bg-white/90 backdrop-blur-sm shadow-xl rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
         <CardContent className="p-6 space-y-6">
-          <LanguageSelector onLanguageChange={setLanguage} />
-          <ImageUpload onImageUpload={handleImageUpload} />
+          <LanguageSelector onLanguageChange={setLanguage} sideEffect={setPath} />
+          <ImageUpload  onImageUpload={handleImageUpload} />
           {imageUrl && (
             <div className="mt-4 flex justify-center">
               <img
@@ -84,26 +105,7 @@ export default function VisualSearchAssistant() {
               />
             </div>
           )}
-          {match(upload.isPending)
-            .with(true, () => (
-              <p>Please wait while we processing your image...</p>
-            ))
-            .with(false, () =>
-              match(iToText.isPending)
-                .with(true, () => (
-                  <p>
-                    Processing image and extracting information, please wait...
-                  </p>
-                ))
-                .with(false, () =>
-                  match(translator.isPending)
-                    .with(true, () => <p>Wait while we translate your text</p>)
-                    .with(false, () => null)
-                    .exhaustive(),
-                )
-                .exhaustive(),
-            )
-            .exhaustive()}
+          {renderStatusMessage()}
           {description && (
             <div className="space-y-4" key={crypto.randomUUID()}>
               <DescriptionDisplay description={description} />

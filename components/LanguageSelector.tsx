@@ -9,10 +9,12 @@ import {
 
 interface LanguageSelectorProps {
   onLanguageChange: (language: string) => void;
+  sideEffect: (text: string) => void
 }
 
 export default function LanguageSelector({
   onLanguageChange,
+    sideEffect,
 }: LanguageSelectorProps) {
   return (
     <div className="flex items-center space-x-2">
@@ -23,8 +25,8 @@ export default function LanguageSelector({
         Select Language:
       </label>
       <Select
-        onValueChange={onLanguageChange}
-        defaultValue="Xenova/speecht5_tts"
+        onValueChange={(event) => {onLanguageChange(event); sideEffect("")}}
+        defaultValue="Xenova/mms-tts-eng"
       >
         <SelectTrigger className="w-[180px]" id="language-select">
           <SelectValue placeholder="Select a language" />
