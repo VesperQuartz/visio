@@ -14,11 +14,10 @@ export default function VisualSearchAssistant() {
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
   const [description, setDescription] = React.useState<string>("");
   const [language, setLanguage] = React.useState<string>("Xenova/speecht5_tts");
-  const code = modal.find((lang) => lang.model === language)?.code || "en_XX";
+  const code = modal.find((lang) => lang.model === language)?.code || "en";
   const upload = useUploadImage();
   const iToText = useImageToText();
   const translator = useTranslator();
-  console.log(language, code);
 
   const handleImageUpload = async (file: File) => {
     const url = URL.createObjectURL(file);

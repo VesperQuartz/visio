@@ -6,11 +6,10 @@ export const POST = async (request: NextRequest) => {
   console.log("the text", text);
   const translator = await pipeline(
     "translation",
-    "Xenova/mbart-large-50-many-to-many-mmt",
+    "Xenova/m2m100_418M",
   );
   const out = await translator(text, {
-    use_cache: true,
-    src_lang: "en_XX",
+    src_lang: "en",
     tgt_lang: code,
   });
   return NextResponse.json(out);

@@ -2,7 +2,7 @@ export const modal = [
   {
     lang: "english",
     model: "Xenova/speecht5_tts",
-    code: "en_XX",
+    code: "en",
   },
   // {
   //   lang: "tamil",
@@ -11,31 +11,31 @@ export const modal = [
   {
     lang: "russian",
     model: "Xenova/mms-tts-rus",
-    code: "ru_RU",
+    code: "ru",
   },
   {
     lang: "hindi",
     model: "Xenova/mms-tts-hin",
-    code: "hi_IN",
+    code: "hi",
   },
   {
     lang: "spanish",
     model: "Xenova/mms-tts-spa",
-    code: "es_XX",
+    code: "es",
   },
   {
     lang: "german",
     model: "Xenova/mms-tts-deu",
-    code: "de_DE",
+    code: "de",
   },
   {
     lang: "french",
     model: "Xenova/mms-tts-fra",
-    code: "fr_XX",
+    code: "fr",
   },
   {
     lang: "portuguese",
     model: "Xenova/mms-tts-por",
-    code: "pt_XX",
+    code: "pt",
   },
 ];
