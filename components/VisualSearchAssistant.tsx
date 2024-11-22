@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { match } from "ts-pattern";
 import ImageUpload from "./ImageUpload";
 import DescriptionDisplay from "./DescriptionDisplay";
 import AudioPlayback from "./AudioPlayback";
@@ -9,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import {useGenWav, useImageToText, useTextToSpeachLang, useTranslator, useUploadImage} from "@/hooks/api";
 import LanguageSelector from "./LanguageSelector";
 import { modal } from "@/app/constant";
+import Image from "next/image";
 
 export default function VisualSearchAssistant() {
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
@@ -98,7 +98,7 @@ export default function VisualSearchAssistant() {
           <ImageUpload  onImageUpload={handleImageUpload} />
           {imageUrl && (
             <div className="mt-4 flex justify-center">
-              <img
+              <Image
                 src={imageUrl}
                 alt="Uploaded image"
                 className="max-w-full max-h-[50vh] object-contain rounded-lg shadow-md transition-all duration-300 hover:scale-105"
