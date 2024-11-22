@@ -1,6 +1,4 @@
-"use client";
-
-import {useRef, useState} from "react";
+import React from "react";
 import {Camera, Upload} from "lucide-react";
 import {Button} from "@/components/ui/button";
 
@@ -10,10 +8,10 @@ interface ImageUploadProps {
 }
 
 export default function ImageUpload({onImageUpload, sideEffect}: ImageUploadProps) {
-    const [isDragging, setIsDragging] = useState(false);
-    const fileInputRef = useRef<HTMLInputElement>(null);
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const [isCameraActive, setIsCameraActive] = useState(false);
+    const [isDragging, setIsDragging] = React.useState(false);
+    const fileInputRef = React.useRef<HTMLInputElement>(null);
+    const videoRef = React.useRef<HTMLVideoElement>(null);
+    const [isCameraActive, setIsCameraActive] = React.useState(false);
 
     const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
