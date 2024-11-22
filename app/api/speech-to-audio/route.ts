@@ -11,5 +11,5 @@ export const POST = async (request: NextRequest) => {
     path.join(process.cwd() + `/public/${name}.wav`),
     wav.toBuffer(),
   );
-  return NextResponse.json({ audio: wav.toBase64() });
+  return NextResponse.json({ audio: `/${name}.wav` });
 };

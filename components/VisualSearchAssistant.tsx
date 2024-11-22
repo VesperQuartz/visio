@@ -6,7 +6,7 @@ import ImageUpload from "./ImageUpload";
 import DescriptionDisplay from "./DescriptionDisplay";
 import AudioPlayback from "./AudioPlayback";
 import { Card, CardContent } from "@/components/ui/card";
-import { useImageToText, useTranslator, useUploadImage } from "@/hooks/api";
+import {useGenWav, useImageToText, useTextToSpeachLang, useTranslator, useUploadImage} from "@/hooks/api";
 import LanguageSelector from "./LanguageSelector";
 import { modal } from "@/app/constant";
 
@@ -14,10 +14,13 @@ export default function VisualSearchAssistant() {
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
   const [description, setDescription] = React.useState<string>("");
   const [language, setLanguage] = React.useState<string>("Xenova/speecht5_tts");
+  const [path, setPath] = React.useState<string| null>(null);
   const code = modal.find((lang) => lang.model === language)?.code || "en";
   const upload = useUploadImage();
   const iToText = useImageToText();
   const translator = useTranslator();
+  const tts = useTextToSpeachLang();
+  const wav = useGenWav();
 
   const handleImageUpload = async (file: File) => {
     const url = URL.createObjectURL(file);
@@ -41,6 +44,15 @@ export default function VisualSearchAssistant() {
                       onSuccess: (data) => {
                         console.log("data-desc", data);
                         setDescription(data[0]?.translation_text);
+                        tts.mutate({text: data[0]?.translation_text, modal: language}, {
+                          onSuccess: (data) => {
+                            wav.mutate({sampling_rate: data.sampling_rate, audio: data.audio, name: crypto.randomUUID()}, {
+                              onSuccess: (data) => {
+                                setPath(data.audio);
+                              }
+                            })
+                          }
+                        })
                       },
                     },
                   );
@@ -95,7 +107,7 @@ export default function VisualSearchAssistant() {
           {description && (
             <div className="space-y-4" key={crypto.randomUUID()}>
               <DescriptionDisplay description={description} />
-              <AudioPlayback text={description} />
+              <AudioPlayback path={path!} />
             </div>
           )}
         </CardContent>

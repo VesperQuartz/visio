@@ -6,7 +6,7 @@ import {
   genTextToSpeechLang,
   getTranslation,
 } from "@/app/services";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation} from "@tanstack/react-query";
 
 export const useTextToSpeach = () => {
   return useMutation({

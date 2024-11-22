@@ -43,7 +43,7 @@ export const getWavAudio = async ({
   sampling_rate: number;
   name: string;
 }) => {
-  const response = await fetch("http://localhost:3000/api/speech-to-audio", {
+  const response = await fetch("/api/speech-to-audio", {
     method: "POST",
     body: JSON.stringify({ sampling_rate, audio, name }),
     headers: {
