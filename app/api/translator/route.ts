@@ -10,6 +10,6 @@ export const POST = async (request: NextRequest) => {
     const out = await translator(text, {
         src_lang: "en",
         tgt_lang: code,
-    });
+    } as never);
     return NextResponse.json(out);
 };
