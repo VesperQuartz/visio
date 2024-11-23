@@ -1,6 +1,8 @@
 import { pipeline, env } from "@huggingface/transformers";
 import { NextRequest, NextResponse } from "next/server";
+
 env.allowRemoteModels = true;
+env.allowLocalModels=false;
 env.cacheDir = "./.cache";
 
 export const POST = async (request: NextRequest) => {
