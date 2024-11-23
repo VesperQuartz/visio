@@ -1,4 +1,13 @@
 # Visio - Visual search assistant
+
+
+
+https://github.com/user-attachments/assets/8d0aece8-edc5-40f2-ae02-441723b8b212
+> [!IMPORTANT]
+>
+>  Use a chromium base browser if video doesn't play
+
+
 ## Introduction
 
 In today's fast-paced digital world, accessibility and efficiency are key. The Visual Search Assistant is a cutting-edge tool designed to revolutionize how we interact with visual content. This application allows users to upload an image and leverage advanced AI technologies to analyze and interpret the content within it. The system provides detailed descriptions of the image's context, enabling users to understand what is happening in the picture with ease.
@@ -50,7 +59,7 @@ The Visual Search Assistant operates through a series of coordinated steps that 
 
 > [!IMPORTANT]
 >
->  I found out the best way to actually run the app with no issues because of the intense resource this models uses is to run it on gitpod. 
+>  I found out the best way to run the app with no issues, because of the intense resource this models use is to run it on gitpod. 
 
 ### Create your gitpod account set it up and download the extension for your browser by searching gitpod on your extension store.
 
