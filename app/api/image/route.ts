@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { ListObjectsCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 import { s3 } from "@/lib/s3";
 
-const Bucket = "lectus-bucket";
+const Bucket = process.env.AWS_BUCKET_NAME;
 export async function GET() {
   const response = await s3.send(new ListObjectsCommand({ Bucket }));
   return NextResponse.json(response?.Contents ?? []);
