@@ -1,8 +1,8 @@
 # Visio - Visual search assistant
 
+https://github.com/user-attachments/assets/7c5aee6a-90bb-4fdf-a9db-9a3e93ced2a2
 
 
-https://github.com/user-attachments/assets/8d0aece8-edc5-40f2-ae02-441723b8b212
 > [!IMPORTANT]
 >
 >  Use a chromium base browser if video doesn't play
@@ -12,9 +12,9 @@ https://github.com/user-attachments/assets/8d0aece8-edc5-40f2-ae02-441723b8b212
 
 In today's fast-paced digital world, accessibility and efficiency are key. The Visual Search Assistant is a cutting-edge tool designed to revolutionize how we interact with visual content. This application allows users to upload an image and leverage advanced AI technologies to analyze and interpret the content within it. The system provides detailed descriptions of the image's context, enabling users to understand what is happening in the picture with ease.
 
-Beyond textual analysis, the Visual Search Assistant stands out by offering multilingual support. Users can select their preferred language to receive a translated description of the image, ensuring inclusivity and accessibility for a global audience. To further enhance usability, the app integrates audio playback capabilities, allowing the description to be narrated in the selected language ideal for users who prefer auditory feedback or those with visual impairments.
+Beyond textual analysis, the Visual Search Assistant stands out by offering multilingual support. Users can select their preferred language to receive a translated description of the image, ensuring inclusivity and accessibility for a global audience. To further enhance usability, the app integrates audio playback capabilities, allowing the description to be narrated in the selected language—ideal for users who prefer auditory feedback or those with visual impairments.
 
-This intuitive and feature-rich application is a game-changer for accessibility, language learning, and on-the-go interactions, making image analysis simple, inclusive, and engaging for everyone.
+In addition to these features, the Visual Search Assistant introduces an interactive Question-and-Answer (Q&A) section. This feature allows users to upload an image and ask specific questions about its context. For example, users can inquire about objects in the image, activities taking place, or even details like text visible within the photo. This dynamic functionality ensures a more personalized and in-depth exploration of visual content, transforming how users interact with images and enhancing their overall experience.
 
 ## Project Workflow
 
