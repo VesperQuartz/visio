@@ -117,3 +117,23 @@ export const getTranslation = async ({ text, code }: { text: string; code: strin
     throw error;
   }
 };
+
+export const getAnswer = async ({ text, key }: { text: string; key: string }) => {
+  try {
+    const response = await fetch("/api/qa-assistant", {
+      method: "POST",
+      body: JSON.stringify({ text, key }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`QA API responded with ${response.status}: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return data as Array<{ answer: string }>;
+  } catch (error) {
+    logError(error, "getAnswer");
+    throw error;
+  }
+};

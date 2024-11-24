@@ -4,7 +4,7 @@ import {
   getWavAudio,
   uploadImage,
   genTextToSpeechLang,
-  getTranslation,
+  getTranslation, getAnswer,
 } from "@/app/services";
 import { useMutation} from "@tanstack/react-query";
 
@@ -59,3 +59,10 @@ export const useTranslator = () => {
       getTranslation({ text, code }),
   });
 };
+
+export const useGetAnswer = () => {
+  return useMutation({
+    mutationKey: ["qa__"],
+    mutationFn: ({ text, key }: { text: string; key: string }) => getAnswer({ key, text})
+  })
+}

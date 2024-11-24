@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { WallProvider } from "./providers/wallprovider";
 import { AsyncProvider } from "./providers/asyncprovider";
+import Navbar from "@/components/Navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,9 +32,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AsyncProvider>
-          <WallProvider>{children}</WallProvider>
+          <WallProvider>
+            <div className="min-h-screen bg-gradient-to-br from-blue-400 via-cyan-500 to-indigo-600">
+              <Navbar/>{children}
+            </div>
+          </WallProvider>
         </AsyncProvider>
       </body>
     </html>
-  );
+);
 }
